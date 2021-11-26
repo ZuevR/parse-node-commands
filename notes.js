@@ -11,12 +11,13 @@ function getNotes() {
 
 function addNote(title, body) {
   const notes = getNotes();
-  notes.push({ title, body });
   const titles = notes.map((note) => note.title);
 
   if (titles.includes(title)) {
     return;
   }
+
+  notes.push({ title, body });
 
   fs.writeFileSync('notes.json', JSON.stringify(notes));
 }
